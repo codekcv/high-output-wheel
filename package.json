@@ -18,6 +18,7 @@
     "next": "10.0.2",
     "nexus-plugin-prisma": "^0.24.0",
     "react": "17.0.1",
+    "react-confetti": "^6.0.0",
     "react-dom": "17.0.1",
     "styled-components": "^5.2.1",
     "swr": "^0.3.9"

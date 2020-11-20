@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 import { motion, useAnimation, useMotionValue } from 'framer-motion';
@@ -12,6 +12,7 @@ import { useApp } from 'context';
 const colors = [...colorPalette];
 const polygon = 'polygon(0 0, 0 200%, -100% 200%, -100% 0)';
 const spinDuration = 6;
+const confettiDuration = 4500;
 
 const Wheel: React.FC = () => {
   const app = useApp();
@@ -20,14 +21,15 @@ const Wheel: React.FC = () => {
   const initialRotation = useMotionValue(0);
   const finalRotation = useMotionValue(0);
 
-  const [isFade] = useState(false);
+  const [isFade, setIsFade] = useState(false);
   const [hasWinner, setHasWinner] = useState(false);
   const [isSpinning, setIsSpinning] = useState(false);
   const [isHover, setIsHover] = useState(false);
+  const [isConfetti, setIsConfetti] = useState(false);
   const [updateUser] = useMutation(UPDATE_USER);
 
-  const [, setWinner] = useState<{
-    winner: unknown;
+  const [winner, setWinner] = useState<{
+    winner: any;
     index: number;
   }>({
     winner: { img: '' },
@@ -71,8 +73,36 @@ const Wheel: React.FC = () => {
     setWinner({ winner, index });
     setIsSpinning(false);
     setHasWinner(true);
-    // setIsConfetti(true);
+    setIsConfetti(true);
   };
+
+  useEffect(() => {
+    if (hasWinner) {
+      setTimeout(() => {
+        setHasWinner((_p) => false);
+        setIsFade((_p) => true);
+
+        if (!app.readOnly) {
+          app.setUsers((users: any) => {
+            const newUsers = [...users];
+            newUsers.find(
+              (user: any) => user.name === winner.winner.name
+            ).sharer = true;
+
+            return newUsers;
+          });
+        }
+
+        setTimeout(() => {
+          setIsFade((p) => false);
+        }, 2000);
+      }, confettiDuration);
+
+      setTimeout(() => {
+        setIsConfetti((p) => false);
+      }, confettiDuration + 2000);
+    }
+  }, [winner.index, hasWinner, app, winner.winner.name]);
 
   return (
     <Container isFade={isFade} hasWinner={hasWinner}>
@@ -154,13 +184,13 @@ const Wheel: React.FC = () => {
       <div className='pointer' />
 
       <div className='winner'>
-        {/* <Image
-          src={''}
+        <img
+          className='spin-image'
+          src={winner.winner.img || '/wheel/pok.png'}
           width={600}
           height={600}
-          alt="winner"
-          style={{ border: '5px silver ridge', borderRadius: '50%' }}
-        /> */}
+          alt='winner'
+        />
       </div>
     </Container>
   );
