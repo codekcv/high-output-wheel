@@ -8,6 +8,7 @@ import { User } from '@prisma/client';
 import { useMutation } from '@apollo/client';
 import { UPDATE_USER } from 'constants/mutations';
 import { useApp } from 'context';
+import { USERS } from 'constants/queries';
 
 const colors = [...colorPalette];
 const polygon = 'polygon(0 0, 0 200%, -100% 200%, -100% 0)';
@@ -47,6 +48,8 @@ const Wheel: React.FC = () => {
 
   let colorIncrementer = 0;
   const spinButton = async (): Promise<void> => {
+    const sharers = app.users.filter((user: any) => user.sharer).length >= 2;
+    if (sharers && !app.readOnly) return alert('ALREADY HAVE SHARERS!');
     if (isSpinning) return;
 
     setIsSpinning(true);
@@ -74,6 +77,22 @@ const Wheel: React.FC = () => {
     setIsSpinning(false);
     setHasWinner(true);
     setIsConfetti(true);
+
+    if (!app.readOnly) {
+      updateUser({
+        variables: {
+          where: {
+            id: winner.id,
+          },
+          data: {
+            sharer: {
+              set: true,
+            },
+          },
+        },
+        refetchQueries: [{ query: USERS }],
+      });
+    }
   };
 
   useEffect(() => {

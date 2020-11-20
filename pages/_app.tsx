@@ -29,6 +29,7 @@ const GlobalStyles = createGlobalStyle`
 
 const httlLink = createHttpLink({
   uri: 'https://high-output-wheel.vercel.app/api',
+  // uri: 'http://localhost:3000/api',
 });
 
 const client = new ApolloClient({
