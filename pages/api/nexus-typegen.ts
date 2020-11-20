@@ -3,8 +3,7 @@
  * Do not make changes to this file directly
  */
 
-import * as Context from "./pages/api/context"
-import * as prisma from ".prisma/client"
+
 
 
 
@@ -57,7 +56,12 @@ export interface NexusGenScalars {
 export interface NexusGenRootTypes {
   Mutation: {};
   Query: {};
-  User: prisma.User;
+  User: { // root type
+    done: boolean; // Boolean!
+    id: number; // Int!
+    img: string; // String!
+    name: string; // String!
+  }
 }
 
 export interface NexusGenAllTypes extends NexusGenRootTypes {
@@ -153,7 +157,7 @@ export type NexusGenScalarNames = "Boolean" | "Float" | "ID" | "Int" | "String";
 export type NexusGenUnionNames = never;
 
 export interface NexusGenTypes {
-  context: Context.Context;
+  context: any;
   inputTypes: NexusGenInputs;
   rootTypes: NexusGenRootTypes;
   argTypes: NexusGenArgTypes;
