@@ -43,11 +43,20 @@ export default new ApolloServer({
     //   typegen: path.join(process.cwd(), 'pages/api/nexus-typegen.ts'),
     //   schema: path.join(process.cwd(), 'pages/api/schema.graphql'),
     // },
+    // outputs: {
+    //   typegen: path.join(
+    //     process.cwd(),
+    //     'pages/api/generated/typegen-nexus-plugin-prisma.d.ts'
+    //   ),
+    // },
     outputs: {
       typegen: path.join(
         process.cwd(),
-        'pages/api/generated/typegen-nexus-plugin-prisma.d.ts'
+        'pages',
+        'api',
+        'typegen-nexus-plugin-prisma.d.ts'
       ),
+      schema: path.join(process.cwd(), 'pages', 'api', 'schema.graphql'),
     },
     // typegenAutoConfig: {
     //   contextType: 'Context.Context',
