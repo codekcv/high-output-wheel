@@ -90,6 +90,14 @@ const Container = styled.div`
   padding: 2rem;
   font-size: 1.5rem;
 
+  p {
+    margin: 0;
+  }
+
+  h2 {
+    margin: 0;
+  }
+
   .divider {
     border-bottom: 1px gray dashed;
     margin: 1rem 0;
