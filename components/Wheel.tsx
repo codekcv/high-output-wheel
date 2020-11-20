@@ -144,7 +144,7 @@ const Wheel: React.FC = () => {
                       // border: "1px red solid",
                     }}
                   >
-                    <Image
+                    <img
                       className='next-image'
                       src={user.img}
                       width={60}
@@ -170,7 +170,7 @@ const Wheel: React.FC = () => {
       </motion.div>
 
       <button className='spin-button' onClick={spinButton}>
-        <Image
+        <img
           className='next-image spin-image'
           src={`/wheel/${image}.png`}
           alt='pepe'

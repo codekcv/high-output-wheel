@@ -39,9 +39,18 @@ export default new ApolloServer({
       }),
     ],
     shouldGenerateArtifacts: process.env.NODE_ENV === 'development',
+    // outputs: {
+    //   typegen: path.join(process.cwd(), 'pages/api/nexus-typegen.ts'),
+    //   schema: path.join(process.cwd(), 'pages/api/schema.graphql'),
+    // },
     outputs: {
-      typegen: path.join(process.cwd(), 'pages/api/nexus-typegen.ts'),
-      schema: path.join(process.cwd(), 'pages/api/schema.graphql'),
+      typegen: path.join(
+        process.cwd(),
+        'pages',
+        'api',
+        'generated',
+        'typegen-nexus-plugin-prisma.d.ts'
+      ),
     },
     // typegenAutoConfig: {
     //   contextType: 'Context.Context',
