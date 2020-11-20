@@ -1,6 +1,6 @@
 import { makeSchema, mutationType, objectType, queryType } from '@nexus/schema';
-// import { nexusSchemaPrisma } from 'nexus-plugin-prisma/schema';
-import { nexusPrisma } from 'nexus-plugin-prisma';
+import { nexusSchemaPrisma } from 'nexus-plugin-prisma/schema';
+// import { nexusPrisma } from 'nexus-plugin-prisma';
 import { ApolloServer } from 'apollo-server-micro';
 import { createContext } from './context';
 import path from 'path';
@@ -33,7 +33,7 @@ export default new ApolloServer({
       }),
     },
     plugins: [
-      nexusPrisma({
+      nexusSchemaPrisma({
         // prismaClient: () => new PrismaClient(),
         experimentalCRUD: true,
       }),
