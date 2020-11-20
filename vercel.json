@@ -1,10 +1,10 @@
 {
   "env": {
-    "DATABASE_URL": "@database_url"
+    "DATABASE_URL": "postgres://zrawdkbpotyfle:4910ce810f6e49a7bb302b06ecd38400ec9592337416dfd87fe225cf26a69f8f@ec2-34-204-121-199.compute-1.amazonaws.com:5432/deuqpkaed8rsm1"
   },
   "build": {
     "env": {
-      "DATABASE_URL": "@database_url"
+      "DATABASE_URL": "postgres://zrawdkbpotyfle:4910ce810f6e49a7bb302b06ecd38400ec9592337416dfd87fe225cf26a69f8f@ec2-34-204-121-199.compute-1.amazonaws.com:5432/deuqpkaed8rsm1"
     }
   }
 }
