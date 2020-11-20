@@ -1,5 +1,6 @@
 import { makeSchema, mutationType, objectType, queryType } from '@nexus/schema';
-import { nexusSchemaPrisma } from 'nexus-plugin-prisma/schema';
+// import { nexusSchemaPrisma } from 'nexus-plugin-prisma/schema';
+import { nexusPrisma } from 'nexus-plugin-prisma';
 // import { nexusPrisma } from 'nexus-plugin-prisma';
 import { ApolloServer } from 'apollo-server-micro';
 import { createContext } from './context';
@@ -33,14 +34,11 @@ export default new ApolloServer({
       }),
     },
     plugins: [
-      nexusSchemaPrisma({
+      nexusPrisma({
         experimentalCRUD: true,
-        shouldGenerateArtifacts: true,
-        // outputs: {
-        //   typegen: __dirname + '/generated/typegen-nexus-plugin-prisma.d.ts',
-        // },
       }),
     ],
+    shouldGenerateArtifacts: true,
     // outputs: {
     //   typegen: path.join(process.cwd(), 'pages/api/nexus-typegen.ts'),
     //   schema: path.join(process.cwd(), 'pages/api/schema.graphql'),
@@ -48,25 +46,22 @@ export default new ApolloServer({
     outputs: {
       typegen: path.join(
         process.cwd(),
-        'pages',
-        'api',
-        'generated',
-        'typegen-nexus-plugin-prisma.d.ts'
+        'pages/api/generated/typegen-nexus-plugin-prisma.d.ts'
       ),
     },
-    typegenAutoConfig: {
-      contextType: 'Context.Context',
-      sources: [
-        {
-          source: '.prisma/client',
-          alias: 'prisma',
-        },
-        {
-          source: require.resolve('./context'),
-          alias: 'Context',
-        },
-      ],
-    },
+    // typegenAutoConfig: {
+    //   contextType: 'Context.Context',
+    //   sources: [
+    //     {
+    //       source: '.prisma/client',
+    //       alias: 'prisma',
+    //     },
+    //     {
+    //       source: require.resolve('./context'),
+    //       alias: 'Context',
+    //     },
+    //   ],
+    // },
   }),
   context: createContext,
 }).createHandler({
