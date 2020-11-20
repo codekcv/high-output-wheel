@@ -32,12 +32,6 @@ export default new ApolloServer({
         },
       }),
     },
-    // plugins: [
-    //   nexusSchemaPrisma({
-    //     // prismaClient: () => new PrismaClient(),
-    //     experimentalCRUD: true,
-    //   }),
-    // ],
     plugins: [
       nexusSchemaPrisma({
         experimentalCRUD: true,
@@ -47,7 +41,6 @@ export default new ApolloServer({
         // },
       }),
     ],
-    // shouldGenerateArtifacts: process.env.NODE_ENV === 'development',
     // outputs: {
     //   typegen: path.join(process.cwd(), 'pages/api/nexus-typegen.ts'),
     //   schema: path.join(process.cwd(), 'pages/api/schema.graphql'),
@@ -61,20 +54,19 @@ export default new ApolloServer({
         'typegen-nexus-plugin-prisma.d.ts'
       ),
     },
-
-    // typegenAutoConfig: {
-    //   contextType: 'Context.Context',
-    //   sources: [
-    //     {
-    //       source: '.prisma/client',
-    //       alias: 'prisma',
-    //     },
-    //     {
-    //       source: require.resolve('./context'),
-    //       alias: 'Context',
-    //     },
-    //   ],
-    // },
+    typegenAutoConfig: {
+      contextType: 'Context.Context',
+      sources: [
+        {
+          source: '.prisma/client',
+          alias: 'prisma',
+        },
+        {
+          source: require.resolve('./context'),
+          alias: 'Context',
+        },
+      ],
+    },
   }),
   context: createContext,
 }).createHandler({
