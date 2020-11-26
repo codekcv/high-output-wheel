@@ -26,6 +26,7 @@ type User {
   id: Int!
   img: String!
   name: String!
+  sharer: Boolean!
 }
 
 input UserCreateInput {

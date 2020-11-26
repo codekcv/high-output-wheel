@@ -17,6 +17,7 @@ export default new ApolloServer({
           t.model.name();
           t.model.img();
           t.model.done();
+          t.model.sharer();
         },
       }),
       Query: queryType({

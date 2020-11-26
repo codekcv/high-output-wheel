@@ -39,7 +39,7 @@ const CodeSharer: React.FC = () => {
 
   return (
     <Container>
-      <h2>OCTOBER 9, 2020</h2>
+      <h2>EVERY FRIDAY! :pkek:</h2>
       {/* <DatePicker
         selected={startDate}
         onChange={(date: any) => setStartDate(date)}

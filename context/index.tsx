@@ -17,6 +17,7 @@ export const AppProvider: React.FC = ({ children }) => {
           img: user.img,
           id: user.id,
           done: user.done,
+          sharer: user.sharer,
         }))
       );
     },

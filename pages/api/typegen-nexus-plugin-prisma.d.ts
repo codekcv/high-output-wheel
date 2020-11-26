@@ -61,6 +61,7 @@ export interface NexusGenRootTypes {
     id: number; // Int!
     img: string; // String!
     name: string; // String!
+    sharer: boolean; // Boolean!
   }
 }
 
@@ -92,6 +93,7 @@ export interface NexusGenFieldTypes {
     id: number; // Int!
     img: string; // String!
     name: string; // String!
+    sharer: boolean; // Boolean!
   }
 }
 
@@ -110,6 +112,7 @@ export interface NexusGenFieldTypeNames {
     id: 'Int'
     img: 'String'
     name: 'String'
+    sharer: 'Boolean'
   }
 }
 

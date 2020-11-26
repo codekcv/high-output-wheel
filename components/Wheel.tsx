@@ -47,6 +47,7 @@ const Wheel: React.FC = () => {
   const image = isSpinning ? 'pnani' : isHover ? 'pmonkas' : 'pok';
 
   let colorIncrementer = 0;
+
   const spinButton = async (): Promise<void> => {
     const sharers = app.users.filter((user: any) => user.sharer).length >= 2;
     if (sharers && !app.readOnly) return alert('ALREADY HAVE SHARERS!');

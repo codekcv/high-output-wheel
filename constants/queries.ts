@@ -7,6 +7,7 @@ export const USERS = gql`
       name
       img
       done
+      sharer
     }
   }
 `;
