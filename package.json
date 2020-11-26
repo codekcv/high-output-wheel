@@ -10,7 +10,7 @@
   "dependencies": {
     "@apollo/client": "^3.2.7",
     "@nexus/schema": "^0.18.0",
-    "@prisma/client": "^2.11.0",
+    "@prisma/client": "^2.12.1",
     "apollo-server-micro": "^2.19.0",
     "framer-motion": "^2.9.4",
     "graphql": "^15.4.0",
@@ -22,7 +22,7 @@
     "styled-components": "^5.2.1"
   },
   "devDependencies": {
-    "@prisma/cli": "^2.11.0",
+    "@prisma/cli": "^2.12.1",
     "@types/node": "^14.14.9",
     "@types/react": "^16.9.56",
     "@types/styled-components": "^5.1.4",
