@@ -30,9 +30,9 @@ const Mutation = mutationType({
 
 export const schema = makeSchema({
   types: [User, Query, Mutation],
-  // plugins: [nexusPrisma({ experimentalCRUD: true })],
   plugins: [
     nexusSchemaPrisma({
+      experimentalCRUD: true,
       outputs: {
         typegen: path.join(
           process.cwd(),
@@ -42,6 +42,7 @@ export const schema = makeSchema({
           'typegen-nexus-plugin-prisma.d.ts'
         ),
       },
+      shouldGenerateArtifacts: true,
     }),
   ],
   typegenAutoConfig: {
@@ -57,5 +58,4 @@ export const schema = makeSchema({
       },
     ],
   },
-  shouldExitAfterGenerateArtifacts: true,
 });
