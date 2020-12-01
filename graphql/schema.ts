@@ -1,5 +1,5 @@
 import { makeSchema, mutationType, objectType, queryType } from '@nexus/schema';
-import { nexusPrisma } from 'nexus-plugin-prisma';
+import { nexusSchemaPrisma } from 'nexus-plugin-prisma/schema';
 import path from 'path';
 
 const User = objectType({
@@ -30,15 +30,20 @@ const Mutation = mutationType({
 
 export const schema = makeSchema({
   types: [User, Query, Mutation],
-  plugins: [nexusPrisma({ experimentalCRUD: true })],
-  outputs: {
-    typegen: path.join(
-      process.cwd(),
-      'pages',
-      'api',
-      'typegen-nexus-plugin-prisma.d.ts'
-    ),
-  },
+  // plugins: [nexusPrisma({ experimentalCRUD: true })],
+  plugins: [
+    nexusSchemaPrisma({
+      outputs: {
+        typegen: path.join(
+          process.cwd(),
+          'pages',
+          'api',
+          'generated',
+          'typegen-nexus-plugin-prisma.d.ts'
+        ),
+      },
+    }),
+  ],
   typegenAutoConfig: {
     contextType: 'Context.Context',
     sources: [
@@ -52,5 +57,5 @@ export const schema = makeSchema({
       },
     ],
   },
-  // shouldExitAfterGenerateArtifacts: true,
+  shouldExitAfterGenerateArtifacts: true,
 });
