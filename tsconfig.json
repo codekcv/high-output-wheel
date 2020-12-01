@@ -1,33 +1,20 @@
 {
   "compilerOptions": {
-    "sourceMap": true,
-    "module": "commonjs",
-    "target": "ES2018",
-    "outDir": "dist",
-    "lib": ["esnext", "dom"],
-    "noImplicitAny": true,
-    "noImplicitThis": true,
-    "alwaysStrict": true,
-    "strictBindCallApply": true,
-    "strictFunctionTypes": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "noUnusedParameters": false,
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
+    "skipLibCheck": true,
     "strict": false,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
     "baseUrl": "."
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "typegen-nexus-plugin-prisma.d.ts"
-  ],
+  // "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }
