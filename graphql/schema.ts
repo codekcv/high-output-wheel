@@ -32,8 +32,13 @@ export const schema = makeSchema({
   types: [User, Query, Mutation],
   plugins: [nexusPrisma({ experimentalCRUD: true })],
   outputs: {
-    typegen: path.join(process.cwd(), 'generated', 'nexus-typegen.ts'),
-    schema: path.join(process.cwd(), 'generated', 'schema.graphql'),
+    typegen: path.join(
+      process.cwd(),
+      'pages',
+      'api',
+      'generated',
+      'typegen-nexus-plugin-prisma.d.ts'
+    ),
   },
   typegenAutoConfig: {
     contextType: 'Context.Context',
@@ -48,5 +53,5 @@ export const schema = makeSchema({
       },
     ],
   },
-  shouldExitAfterGenerateArtifacts: true,
+  // shouldExitAfterGenerateArtifacts: true,
 });
