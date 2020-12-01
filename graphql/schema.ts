@@ -48,4 +48,5 @@ export const schema = makeSchema({
       },
     ],
   },
+  shouldExitAfterGenerateArtifacts: true,
 });
