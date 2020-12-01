@@ -4,7 +4,7 @@ import {
   createHttpLink,
   InMemoryCache,
 } from '@apollo/client';
-import { AppProvider } from 'context';
+import { AppProvider } from 'src/context';
 import { AppProps } from 'next/app';
 import { createGlobalStyle } from 'styled-components';
 

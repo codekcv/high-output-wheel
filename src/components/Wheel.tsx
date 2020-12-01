@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 import { motion, useAnimation, useMotionValue } from 'framer-motion';
-import { useAudio } from 'hooks/useAudio';
-import { colorPalette } from 'constants/colorPalette';
+import { useAudio } from 'src/hooks/useAudio';
+import { colorPalette } from 'src/constants/colorPalette';
 import { User } from '@prisma/client';
 import { useMutation } from '@apollo/client';
-import { UPDATE_USER } from 'constants/mutations';
-import { useApp } from 'context';
-import { USERS } from 'constants/queries';
+import { UPDATE_USER } from 'src/constants/mutations';
+import { useApp } from 'src/context';
+import { USERS } from 'src/constants/queries';
 
 const colors = [...colorPalette];
 const polygon = 'polygon(0 0, 0 200%, -100% 200%, -100% 0)';

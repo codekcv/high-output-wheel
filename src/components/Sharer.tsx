@@ -1,6 +1,6 @@
 import { useMutation } from '@apollo/client';
-import { UPDATE_USER } from 'constants/mutations';
-import { USERS } from 'constants/queries';
+import { UPDATE_USER } from 'src/constants/mutations';
+import { USERS } from 'src/constants/queries';
 import React from 'react';
 import styled from 'styled-components';
 import { useApp } from '../context';

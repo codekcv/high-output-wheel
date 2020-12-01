@@ -1,6 +1,6 @@
 import { useLazyQuery } from '@apollo/client';
 import { User } from '@prisma/client';
-import { USERS } from 'constants/queries';
+import { USERS } from 'src/constants/queries';
 import React, { createContext, useContext, useMemo, useState } from 'react';
 
 const AppContext = createContext<{ [key: string]: any }>({});

@@ -1,8 +1,8 @@
-import { Sharer, Wheel } from 'components';
+import { Sharer, Wheel } from 'src/components';
 // import { useAudio, useQuery } from 'hooks';
-import { USERS } from 'constants/queries';
+import { USERS } from 'src/constants/queries';
 import styled from 'styled-components';
-import { useApp } from 'context';
+import { useApp } from 'src/context';
 
 const Index: React.FC = () => {
   const app = useApp();
