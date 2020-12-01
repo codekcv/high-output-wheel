@@ -4,10 +4,7 @@
     "module": "commonjs",
     "target": "ES2018",
     "outDir": "dist",
-    "lib": [
-      "esnext",
-      "dom"
-    ],
+    "lib": ["esnext", "dom"],
     // "strict": true,
     "noImplicitAny": true,
     "noImplicitThis": true,
@@ -27,10 +24,6 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "include": [
-    "./src"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
 }
