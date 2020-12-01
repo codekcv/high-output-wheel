@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
     "sourceMap": true,
-    "module": "esnext",
-    "target": "es5",
+    "module": "commonjs",
+    "target": "ES2018",
     "outDir": "dist",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": ["esnext", "dom"],
     "noImplicitAny": true,
     "noImplicitThis": true,
     "alwaysStrict": true,
