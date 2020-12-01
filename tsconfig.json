@@ -1,19 +1,27 @@
 {
   "compilerOptions": {
-    "target": "es2015",
+    "sourceMap": true,
+    "module": "esnext",
+    "target": "es5",
+    "outDir": "dist",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "esModuleInterop": true,
     "skipLibCheck": true,
+    "noUnusedParameters": false,
+    "allowJs": true,
     "strict": false,
     "forceConsistentCasingInFileNames": true,
-    "esModuleInterop": true,
-    "module": "esnext",
+    "noEmit": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "jsx": "preserve",
-    "rootDir": ".",
     "isolatedModules": true,
-    "noEmit": true
+    "jsx": "preserve",
+    "baseUrl": "."
   },
   "include": [
     "next-env.d.ts",
@@ -21,6 +29,5 @@
     "**/*.tsx",
     "typegen-nexus-plugin-prisma.d.ts"
   ],
-  // "include": ["./src"],
   "exclude": ["node_modules"]
 }
