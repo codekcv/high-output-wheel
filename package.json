@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "transpile": "ts-node-dev --transpile-only --no-notify src/pages/api",
+    "transpile": "ts-node --transpile-only src/pages/api",
     "build": "npm run transpile && next build",
     "start": "next start"
   },
@@ -20,7 +20,8 @@
     "react": "17.0.1",
     "react-confetti": "^6.0.0",
     "react-dom": "17.0.1",
-    "styled-components": "^5.2.1"
+    "styled-components": "^5.2.1",
+    "ts-node": "^9.1.0"
   },
   "devDependencies": {
     "@prisma/cli": "^2.12.1",
