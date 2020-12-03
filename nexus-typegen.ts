@@ -3,10 +3,14 @@
  * Do not make changes to this file directly
  */
 
+import * as ContextModule from "./src/pages/api/context"
+
+
+
 declare global {
   interface NexusGenCustomOutputProperties<TypeName extends string> {
-    crud: NexusPrisma<TypeName, 'crud'>;
-    model: NexusPrisma<TypeName, 'model'>;
+    crud: NexusPrisma<TypeName, 'crud'>
+    model: NexusPrisma<TypeName, 'model'>
   }
 }
 
@@ -15,143 +19,131 @@ declare global {
 }
 
 export interface NexusGenInputs {
-  BoolFieldUpdateOperationsInput: {
-    // input type
+  BoolFieldUpdateOperationsInput: { // input type
     set?: boolean | null; // Boolean
-  };
-  StringFieldUpdateOperationsInput: {
-    // input type
+  }
+  StringFieldUpdateOperationsInput: { // input type
     set?: string | null; // String
-  };
-  UserCreateInput: {
-    // input type
+  }
+  UserCreateInput: { // input type
     done?: boolean | null; // Boolean
     img: string; // String!
     name: string; // String!
     sharer?: boolean | null; // Boolean
-  };
-  UserUpdateInput: {
-    // input type
+  }
+  UserUpdateInput: { // input type
     done?: NexusGenInputs['BoolFieldUpdateOperationsInput'] | null; // BoolFieldUpdateOperationsInput
     img?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     name?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     sharer?: NexusGenInputs['BoolFieldUpdateOperationsInput'] | null; // BoolFieldUpdateOperationsInput
-  };
-  UserWhereUniqueInput: {
-    // input type
+  }
+  UserWhereUniqueInput: { // input type
     id?: number | null; // Int
-  };
+  }
 }
 
-export interface NexusGenEnums {}
+export interface NexusGenEnums {
+}
 
 export interface NexusGenScalars {
-  String: string;
-  Int: number;
-  Float: number;
-  Boolean: boolean;
-  ID: string;
+  String: string
+  Int: number
+  Float: number
+  Boolean: boolean
+  ID: string
 }
 
 export interface NexusGenObjects {
   Mutation: {};
   Query: {};
-  User: {
-    // root type
+  User: { // root type
     done: boolean; // Boolean!
     id: number; // Int!
     img: string; // String!
     name: string; // String!
     sharer: boolean; // Boolean!
-  };
+  }
 }
 
-export interface NexusGenInterfaces {}
+export interface NexusGenInterfaces {
+}
 
-export interface NexusGenUnions {}
+export interface NexusGenUnions {
+}
 
-export type NexusGenRootTypes = NexusGenObjects;
+export type NexusGenRootTypes = NexusGenObjects
 
-export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars;
+export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
-  Mutation: {
-    // field return type
+  Mutation: { // field return type
     createOneUser: NexusGenRootTypes['User']; // User!
     deleteOneUser: NexusGenRootTypes['User'] | null; // User
     updateOneUser: NexusGenRootTypes['User'] | null; // User
-  };
-  Query: {
-    // field return type
+  }
+  Query: { // field return type
     user: NexusGenRootTypes['User'] | null; // User
     users: NexusGenRootTypes['User'][]; // [User!]!
-  };
-  User: {
-    // field return type
+  }
+  User: { // field return type
     done: boolean; // Boolean!
     id: number; // Int!
     img: string; // String!
     name: string; // String!
     sharer: boolean; // Boolean!
-  };
+  }
 }
 
 export interface NexusGenFieldTypeNames {
-  Mutation: {
-    // field return type name
-    createOneUser: 'User';
-    deleteOneUser: 'User';
-    updateOneUser: 'User';
-  };
-  Query: {
-    // field return type name
-    user: 'User';
-    users: 'User';
-  };
-  User: {
-    // field return type name
-    done: 'Boolean';
-    id: 'Int';
-    img: 'String';
-    name: 'String';
-    sharer: 'Boolean';
-  };
+  Mutation: { // field return type name
+    createOneUser: 'User'
+    deleteOneUser: 'User'
+    updateOneUser: 'User'
+  }
+  Query: { // field return type name
+    user: 'User'
+    users: 'User'
+  }
+  User: { // field return type name
+    done: 'Boolean'
+    id: 'Int'
+    img: 'String'
+    name: 'String'
+    sharer: 'Boolean'
+  }
 }
 
 export interface NexusGenArgTypes {
   Mutation: {
-    createOneUser: {
-      // args
+    createOneUser: { // args
       data: NexusGenInputs['UserCreateInput']; // UserCreateInput!
-    };
-    deleteOneUser: {
-      // args
+    }
+    deleteOneUser: { // args
       where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
-    };
-    updateOneUser: {
-      // args
+    }
+    updateOneUser: { // args
       data: NexusGenInputs['UserUpdateInput']; // UserUpdateInput!
       where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
-    };
-  };
+    }
+  }
   Query: {
-    user: {
-      // args
+    user: { // args
       where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
-    };
-    users: {
-      // args
+    }
+    users: { // args
       after?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
       before?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
       first?: number | null; // Int
       last?: number | null; // Int
-    };
-  };
+    }
+  }
 }
 
-export interface NexusGenAbstractTypeMembers {}
+export interface NexusGenAbstractTypeMembers {
+}
 
-export interface NexusGenTypeInterfaces {}
+export interface NexusGenTypeInterfaces {
+}
 
 export type NexusGenObjectNames = keyof NexusGenObjects;
 
@@ -171,14 +163,14 @@ export type NexusGenAbstractsUsingStrategyResolveType = never;
 
 export type NexusGenFeaturesConfig = {
   abstractTypeStrategies: {
-    isTypeOf: false;
-    resolveType: true;
-    __typename: false;
-  };
-};
+    isTypeOf: false
+    resolveType: true
+    __typename: false
+  }
+}
 
 export interface NexusGenTypes {
-  context: any;
+  context: ContextModule.Context;
   inputTypes: NexusGenInputs;
   rootTypes: NexusGenRootTypes;
   argTypes: NexusGenArgTypes;
@@ -192,19 +184,9 @@ export interface NexusGenTypes {
   interfaceNames: NexusGenInterfaceNames;
   scalarNames: NexusGenScalarNames;
   unionNames: NexusGenUnionNames;
-  allInputTypes:
-    | NexusGenTypes['inputNames']
-    | NexusGenTypes['enumNames']
-    | NexusGenTypes['scalarNames'];
-  allOutputTypes:
-    | NexusGenTypes['objectNames']
-    | NexusGenTypes['enumNames']
-    | NexusGenTypes['unionNames']
-    | NexusGenTypes['interfaceNames']
-    | NexusGenTypes['scalarNames'];
-  allNamedTypes:
-    | NexusGenTypes['allInputTypes']
-    | NexusGenTypes['allOutputTypes'];
+  allInputTypes: NexusGenTypes['inputNames'] | NexusGenTypes['enumNames'] | NexusGenTypes['scalarNames'];
+  allOutputTypes: NexusGenTypes['objectNames'] | NexusGenTypes['enumNames'] | NexusGenTypes['unionNames'] | NexusGenTypes['interfaceNames'] | NexusGenTypes['scalarNames'];
+  allNamedTypes: NexusGenTypes['allInputTypes'] | NexusGenTypes['allOutputTypes']
   abstractTypes: NexusGenTypes['interfaceNames'] | NexusGenTypes['unionNames'];
   abstractTypeMembers: NexusGenAbstractTypeMembers;
   objectsUsingAbstractStrategyIsTypeOf: NexusGenObjectsUsingAbstractStrategyIsTypeOf;
@@ -212,18 +194,17 @@ export interface NexusGenTypes {
   features: NexusGenFeaturesConfig;
 }
 
+
 declare global {
-  interface NexusGenPluginTypeConfig<TypeName extends string> {}
-  interface NexusGenPluginFieldConfig<
-    TypeName extends string,
-    FieldName extends string
-  > {
+  interface NexusGenPluginTypeConfig<TypeName extends string> {
+  }
+  interface NexusGenPluginFieldConfig<TypeName extends string, FieldName extends string> {
     /**
      * Whether the type can be null
      * @default (depends on whether nullability is configured in type or schema)
      * @see declarativeWrappingPlugin
      */
-    nullable?: boolean;
+    nullable?: boolean
     /**
      * Whether the type is list of values, or just a single value.
      * If list is true, we assume the type is a list. If list is an array,
@@ -231,24 +212,21 @@ declare global {
      * the type is required (non-null), where true = nonNull, false = nullable.
      * @see declarativeWrappingPlugin
      */
-    list?: true | boolean[];
+    list?: true | boolean[]
     /**
      * Whether the type should be non null, `required: true` = `nullable: false`
      * @default (depends on whether nullability is configured in type or schema)
      * @see declarativeWrappingPlugin
      */
-    required?: boolean;
+    required?: boolean
   }
-  interface NexusGenPluginInputFieldConfig<
-    TypeName extends string,
-    FieldName extends string
-  > {
+  interface NexusGenPluginInputFieldConfig<TypeName extends string, FieldName extends string> {
     /**
      * Whether the type can be null
      * @default (depends on whether nullability is configured in type or schema)
      * @see declarativeWrappingPlugin
      */
-    nullable?: boolean;
+    nullable?: boolean
     /**
      * Whether the type is list of values, or just a single value.
      * If list is true, we assume the type is a list. If list is an array,
@@ -256,22 +234,23 @@ declare global {
      * the type is required (non-null), where true = nonNull, false = nullable.
      * @see declarativeWrappingPlugin
      */
-    list?: true | boolean[];
+    list?: true | boolean[]
     /**
      * Whether the type should be non null, `required: true` = `nullable: false`
      * @default (depends on whether nullability is configured in type or schema)
      * @see declarativeWrappingPlugin
      */
-    required?: boolean;
+    required?: boolean
   }
-  interface NexusGenPluginSchemaConfig {}
+  interface NexusGenPluginSchemaConfig {
+  }
   interface NexusGenPluginArgConfig {
     /**
      * Whether the type can be null
      * @default (depends on whether nullability is configured in type or schema)
      * @see declarativeWrappingPlugin
      */
-    nullable?: boolean;
+    nullable?: boolean
     /**
      * Whether the type is list of values, or just a single value.
      * If list is true, we assume the type is a list. If list is an array,
@@ -279,12 +258,12 @@ declare global {
      * the type is required (non-null), where true = nonNull, false = nullable.
      * @see declarativeWrappingPlugin
      */
-    list?: true | boolean[];
+    list?: true | boolean[]
     /**
      * Whether the type should be non null, `required: true` = `nullable: false`
      * @default (depends on whether nullability is configured in type or schema)
      * @see declarativeWrappingPlugin
      */
-    required?: boolean;
+    required?: boolean
   }
 }
