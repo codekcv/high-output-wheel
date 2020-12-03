@@ -3,10 +3,10 @@ import {
   ApolloProvider,
   createHttpLink,
   InMemoryCache,
-} from '@apollo/client';
-import { AppProvider } from 'src/context';
-import { AppProps } from 'next/app';
-import { createGlobalStyle } from 'styled-components';
+} from "@apollo/client";
+import { AppProvider } from "src/context";
+import { AppProps } from "next/app";
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
   html,
@@ -28,8 +28,8 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 const httpLink = createHttpLink({
-  uri: 'https://high-output-wheel.vercel.app/api/graphql',
-  // uri: 'http://localhost:3000/api/graphql',
+  uri: "https://high-output-wheel.vercel.app/api",
+  // uri: "http://localhost:3000/api",
 });
 
 const client = new ApolloClient({
