@@ -9,6 +9,7 @@ import { useMutation } from "@apollo/client";
 import { UPDATE_USER } from "src/constants/mutations";
 import { useApp } from "src/context";
 import { USERS } from "src/constants/queries";
+import Confetti from "react-confetti";
 
 const colors = [...colorPalette];
 const polygon = "polygon(0 0, 0 200%, -100% 200%, -100% 0)";
@@ -196,6 +197,7 @@ const Wheel: React.FC = () => {
       </button>
 
       <div className="pointer" />
+      {isConfetti && <Confetti className="confetti" width={600} height={600} />}
 
       <div className="winner">
         <img
