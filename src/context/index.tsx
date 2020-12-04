@@ -1,7 +1,7 @@
-import { useLazyQuery } from '@apollo/client';
-import { User } from '@prisma/client';
-import { USERS } from 'src/constants/queries';
-import React, { createContext, useContext, useMemo, useState } from 'react';
+import { useLazyQuery } from "@apollo/client";
+import { User } from "@prisma/client";
+import { USERS } from "src/constants/queries";
+import React, { createContext, useContext, useMemo, useState } from "react";
 
 const AppContext = createContext<{ [key: string]: any }>({});
 
@@ -9,7 +9,7 @@ export const AppProvider: React.FC = ({ children }) => {
   const [users, setUsers] = useState([]);
   const [readOnly, setReadOnly] = useState(true);
   const [loadUsers, { called, error, loading, refetch }] = useLazyQuery(USERS, {
-    fetchPolicy: 'network-only',
+    fetchPolicy: "network-only",
     onCompleted: (data) => {
       setUsers(
         data.users.map((user: User) => ({

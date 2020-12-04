@@ -1,9 +1,9 @@
-import { useMutation } from '@apollo/client';
-import { UPDATE_USER } from 'src/constants/mutations';
-import { USERS } from 'src/constants/queries';
-import React from 'react';
-import styled from 'styled-components';
-import { useApp } from '../context';
+import { useMutation } from "@apollo/client";
+import { UPDATE_USER } from "src/constants/mutations";
+import { USERS } from "src/constants/queries";
+import React from "react";
+import styled from "styled-components";
+import { useApp } from "../context";
 // import DatePicker from "react-datepicker";
 // import "react-datepicker/dist/react-datepicker.css";
 
@@ -17,17 +17,9 @@ const CodeSharer: React.FC = () => {
   const updateDude = async (sharer: any) => {
     await updateUser({
       variables: {
-        where: {
-          id: sharer.id,
-        },
-        data: {
-          sharer: {
-            set: false,
-          },
-          done: {
-            set: true,
-          },
-        },
+        id: sharer.id,
+        done: true,
+        sharer: false,
       },
       refetchQueries: [{ query: USERS }],
     });
@@ -44,10 +36,10 @@ const CodeSharer: React.FC = () => {
         selected={startDate}
         onChange={(date: any) => setStartDate(date)}
       /> */}
-      <div className='code-sharer'>
+      <div className="code-sharer">
         {sharerAmount.map((amount, index) => (
-          <div className='sharer' key={index}>
-            <div>{`Sharer ${amount}: ${sharers[index]?.name || 'TBD!'}`}</div>
+          <div className="sharer" key={index}>
+            <div>{`Sharer ${amount}: ${sharers[index]?.name || "TBD!"}`}</div>
             {sharers[index]?.name && !app.readOnly && (
               <button
                 disabled={mutating}
@@ -60,19 +52,19 @@ const CodeSharer: React.FC = () => {
         ))}
       </div>
 
-      <div className='divider' />
+      <div className="divider" />
 
-      <div className='done'>
+      <div className="done">
         <h2>DONE LIST</h2>
         {app.users.map((user: any, index: number) => (
           <p key={index}>
-            {user.name}:{' '}
+            {user.name}:{" "}
             <span
               style={{
-                color: user.done ? 'green' : user.sharer ? 'orange' : 'red',
+                color: user.done ? "green" : user.sharer ? "orange" : "red",
               }}
             >
-              {user.done ? 'YES' : user.sharer ? 'IN-PROGRESS' : 'NO'}
+              {user.done ? "YES" : user.sharer ? "IN-PROGRESS" : "NO"}
             </span>
           </p>
         ))}

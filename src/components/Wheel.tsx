@@ -1,17 +1,17 @@
-import { useEffect, useState } from 'react';
-import styled from 'styled-components';
-import Image from 'next/image';
-import { motion, useAnimation, useMotionValue } from 'framer-motion';
-import { useAudio } from 'src/hooks/useAudio';
-import { colorPalette } from 'src/constants/colorPalette';
-import { User } from '@prisma/client';
-import { useMutation } from '@apollo/client';
-import { UPDATE_USER } from 'src/constants/mutations';
-import { useApp } from 'src/context';
-import { USERS } from 'src/constants/queries';
+import { useEffect, useState } from "react";
+import styled from "styled-components";
+import Image from "next/image";
+import { motion, useAnimation, useMotionValue } from "framer-motion";
+import { useAudio } from "src/hooks/useAudio";
+import { colorPalette } from "src/constants/colorPalette";
+import { User } from "@prisma/client";
+import { useMutation } from "@apollo/client";
+import { UPDATE_USER } from "src/constants/mutations";
+import { useApp } from "src/context";
+import { USERS } from "src/constants/queries";
 
 const colors = [...colorPalette];
-const polygon = 'polygon(0 0, 0 200%, -100% 200%, -100% 0)';
+const polygon = "polygon(0 0, 0 200%, -100% 200%, -100% 0)";
 const spinDuration = 6;
 const confettiDuration = 4500;
 
@@ -33,24 +33,24 @@ const Wheel: React.FC = () => {
     winner: any;
     index: number;
   }>({
-    winner: { img: '' },
+    winner: { img: "" },
     index: 0,
   });
 
-  const [playAudio] = useAudio('wheel/yo.mp3');
+  const [playAudio] = useAudio("wheel/yo.mp3");
 
   const players = [...users].filter(
     (player: any) => !player.done && !player.sharer
   );
 
   const turnLength = 1 / players.length;
-  const image = isSpinning ? 'pnani' : isHover ? 'pmonkas' : 'pok';
+  const image = isSpinning ? "pnani" : isHover ? "pmonkas" : "pok";
 
   let colorIncrementer = 0;
 
   const spinButton = async (): Promise<void> => {
     const sharers = app.users.filter((user: any) => user.sharer).length >= 2;
-    if (sharers && !app.readOnly) return alert('ALREADY HAVE SHARERS!');
+    if (sharers && !app.readOnly) return alert("ALREADY HAVE SHARERS!");
     if (isSpinning) return;
 
     setIsSpinning(true);
@@ -82,14 +82,8 @@ const Wheel: React.FC = () => {
     if (!app.readOnly) {
       updateUser({
         variables: {
-          where: {
-            id: winner.id,
-          },
-          data: {
-            sharer: {
-              set: true,
-            },
-          },
+          id: winner.id,
+          sharer: true,
         },
         refetchQueries: [{ query: USERS }],
       });
@@ -126,10 +120,10 @@ const Wheel: React.FC = () => {
 
   return (
     <Container isFade={isFade} hasWinner={hasWinner}>
-      <motion.div className='wheel' animate={animation}>
-        <div className='circle'>
+      <motion.div className="wheel" animate={animation}>
+        <div className="circle">
           {players.map((user: User, index: number) => {
-            let clipPath = 'none';
+            let clipPath = "none";
 
             if (colorIncrementer === colors.length - 1) colorIncrementer = 0;
             colorIncrementer += 1;
@@ -144,9 +138,9 @@ const Wheel: React.FC = () => {
             const turn = 1 / players.length / 2;
 
             return (
-              <div className='slice-container' key={index} style={{ clipPath }}>
+              <div className="slice-container" key={index} style={{ clipPath }}>
                 <div
-                  className='slice'
+                  className="slice"
                   style={{
                     background: colors[colorIncrementer],
                     transform: `rotate(${turnLength * index}turn)`,
@@ -157,26 +151,26 @@ const Wheel: React.FC = () => {
                     style={{
                       width: 60,
                       // marginTop: `${turn * 35}rem`,
-                      marginTop: '2rem',
+                      marginTop: "2rem",
                       marginLeft,
-                      transformOrigin: '0 0',
+                      transformOrigin: "0 0",
                       transform: `rotate(${turn}turn)`,
                       // border: "1px red solid",
                     }}
                   >
                     <img
-                      className='next-image'
+                      className="next-image"
                       src={user.img}
                       width={60}
                       height={60}
-                      alt='player'
+                      alt="player"
                     />
 
                     <div
                       style={{
-                        marginTop: '0rem',
-                        textAlign: 'center',
-                        color: 'black',
+                        marginTop: "0rem",
+                        textAlign: "center",
+                        color: "black",
                       }}
                     >
                       {user.name}
@@ -189,11 +183,11 @@ const Wheel: React.FC = () => {
         </div>
       </motion.div>
 
-      <button className='spin-button' onClick={spinButton}>
+      <button className="spin-button" onClick={spinButton}>
         <img
-          className='next-image spin-image'
+          className="next-image spin-image"
           src={`/wheel/${image}.png`}
-          alt='pepe'
+          alt="pepe"
           onMouseEnter={() => setIsHover(true)}
           onMouseLeave={() => setIsHover(false)}
           width={96}
@@ -201,15 +195,15 @@ const Wheel: React.FC = () => {
         />
       </button>
 
-      <div className='pointer' />
+      <div className="pointer" />
 
-      <div className='winner'>
+      <div className="winner">
         <img
-          className='spin-image'
-          src={winner.winner.img || '/wheel/pok.png'}
+          className="spin-image"
+          src={winner.winner.img || "/wheel/pok.png"}
           width={600}
           height={600}
-          alt='winner'
+          alt="winner"
         />
       </div>
     </Container>
