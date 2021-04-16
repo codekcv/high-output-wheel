@@ -3,6 +3,7 @@
 
 
 type Mutation {
+  deleteUser(id: Int!): User
   updateUser(done: Boolean, id: Int!, sharer: Boolean): User
 }
 

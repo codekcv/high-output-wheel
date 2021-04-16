@@ -8,25 +8,24 @@
     "start": "next start"
   },
   "dependencies": {
-    "@apollo/client": "^3.3.11",
-    "@nexus/schema": "^0.19.2",
-    "@prisma/client": "^2.17.0",
-    "apollo-server-micro": "^2.21.0",
-    "framer-motion": "^3.6.7",
+    "@apollo/client": "^3.3.15",
+    "@prisma/client": "^2.21.2",
+    "apollo-server-micro": "^2.23.0",
+    "framer-motion": "^4.1.4",
     "graphql": "^15.5.0",
-    "next": "10.0.7",
-    "react": "17.0.1",
+    "next": "10.1.3",
+    "nexus": "^1.0.0",
+    "react": "17.0.2",
     "react-confetti": "^6.0.1",
-    "react-dom": "17.0.1",
-    "styled-components": "^5.2.1",
+    "react-dom": "17.0.2",
+    "styled-components": "^5.2.3",
     "ts-node": "^9.1.1"
   },
   "devDependencies": {
-    "@prisma/cli": "^2.17.0",
-    "@types/node": "^14.14.31",
-    "@types/react": "^17.0.2",
-    "@types/styled-components": "^5.1.7",
-    "prisma": "^2.17.0",
-    "typescript": "^4.2.2"
+    "@types/node": "^14.14.41",
+    "@types/react": "^17.0.3",
+    "@types/styled-components": "^5.1.9",
+    "prisma": "^2.21.2",
+    "typescript": "^4.2.4"
   }
 }

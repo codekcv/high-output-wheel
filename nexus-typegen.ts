@@ -3,7 +3,7 @@
  * Do not make changes to this file directly
  */
 
-import * as ContextModule from "./src/pages/api/context"
+
 
 
 
@@ -51,6 +51,7 @@ export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
   Mutation: { // field return type
+    deleteUser: NexusGenRootTypes['User'] | null; // User
     updateUser: NexusGenRootTypes['User'] | null; // User
   }
   Query: { // field return type
@@ -67,6 +68,7 @@ export interface NexusGenFieldTypes {
 
 export interface NexusGenFieldTypeNames {
   Mutation: { // field return type name
+    deleteUser: 'User'
     updateUser: 'User'
   }
   Query: { // field return type name
@@ -83,6 +85,9 @@ export interface NexusGenFieldTypeNames {
 
 export interface NexusGenArgTypes {
   Mutation: {
+    deleteUser: { // args
+      id: number; // Int!
+    }
     updateUser: { // args
       done?: boolean | null; // Boolean
       id: number; // Int!
@@ -122,9 +127,10 @@ export type NexusGenFeaturesConfig = {
 }
 
 export interface NexusGenTypes {
-  context: ContextModule.Context;
+  context: any;
   inputTypes: NexusGenInputs;
   rootTypes: NexusGenRootTypes;
+  inputTypeShapes: NexusGenInputs & NexusGenEnums & NexusGenScalars;
   argTypes: NexusGenArgTypes;
   fieldTypes: NexusGenFieldTypes;
   fieldTypeNames: NexusGenFieldTypeNames;

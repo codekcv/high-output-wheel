@@ -1,9 +1,10 @@
 import { useMutation } from "@apollo/client";
-import { UPDATE_USER } from "src/constants/mutations";
+import { UPDATE_USER, DELETE_USER } from "src/constants/mutations";
 import { USERS } from "src/constants/queries";
 import React from "react";
 import styled from "styled-components";
 import { useApp } from "../context";
+import { User } from ".prisma/client";
 // import DatePicker from "react-datepicker";
 // import "react-datepicker/dist/react-datepicker.css";
 
@@ -11,8 +12,9 @@ const CodeSharer: React.FC = () => {
   const app = useApp();
   // const [startDate, setStartDate] = useState(new Date());
   const [updateUser, { loading: mutating }] = useMutation(UPDATE_USER);
+  const [deleteUser, { loading: deleting }] = useMutation(DELETE_USER);
 
-  const sharers = app.users.filter((user: any) => user.sharer);
+  const sharers = app.users.filter((user: User) => user.sharer);
 
   const updateDude = async (sharer: any) => {
     await updateUser({
@@ -22,6 +24,16 @@ const CodeSharer: React.FC = () => {
         sharer: false,
       },
       refetchQueries: [{ query: USERS }],
+    });
+
+    app.refetch();
+  };
+
+  const deleteGuy = async (guy: User) => {
+    // console.log(guy);
+
+    await deleteUser({
+      variables: { id: guy.id },
     });
 
     app.refetch();
@@ -66,6 +78,9 @@ const CodeSharer: React.FC = () => {
             >
               {user.done ? "YES" : user.sharer ? "IN-PROGRESS" : "NO"}
             </span>
+            {!app.readOnly && (
+              <button onClick={() => deleteGuy(user)}>Delete</button>
+            )}
           </p>
         ))}
       </div>

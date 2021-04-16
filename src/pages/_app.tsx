@@ -34,6 +34,13 @@ const httpLink = createHttpLink({
       : "https://high-output-wheel.vercel.app/api",
 });
 
+console.log(
+  1,
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:3000/api"
+    : "https://high-output-wheel.vercel.app/api"
+);
+
 const client = new ApolloClient({
   link: httpLink,
   cache: new InMemoryCache(),

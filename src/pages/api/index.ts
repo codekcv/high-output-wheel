@@ -3,11 +3,12 @@ import {
   booleanArg,
   intArg,
   makeSchema,
+  mutationField,
   mutationType,
   nonNull,
   objectType,
   queryType,
-} from "@nexus/schema";
+} from "nexus";
 import path from "path";
 import { PrismaClient } from "@prisma/client";
 
@@ -55,6 +56,26 @@ const Mutation = mutationType({
         });
       },
     });
+
+    t.field("deleteUser", {
+      type: "User",
+      args: { id: nonNull(intArg()) },
+      resolve: async (_root, args, ctx) => {
+        const findUser = await ctx.db.user.findUnique({
+          where: { id: args.id },
+        });
+
+        console.log("Deleting!");
+        const x = await ctx.db.user.delete({
+          where: {
+            id: findUser.id,
+          },
+        });
+        console.log("DELETED:", x);
+
+        return findUser;
+      },
+    });
   },
 });
 
@@ -67,15 +88,15 @@ const apolloServer = new ApolloServer({
       typegen: path.join(process.cwd(), "nexus-typegen.ts"),
       schema: path.join(process.cwd(), "schema.graphql"),
     },
-    typegenAutoConfig: {
-      sources: [
-        {
-          source: require.resolve("./context"),
-          alias: "ContextModule",
-        },
-      ],
-      contextType: "ContextModule.Context",
-    },
+    // typegenAutoConfig: {
+    //   sources: [
+    //     {
+    //       source: require.resolve("./context"),
+    //       alias: "ContextModule",
+    //     },
+    //   ],
+    //   contextType: "ContextModule.Context",
+    // },
   }),
   context: () => ({ db }),
 });
